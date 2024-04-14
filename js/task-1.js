@@ -1,31 +1,50 @@
-const customer = {
-    username: "Mango",
-    balance: 24000,
-    discount: 0.1,
-    orders: ["Burger", "Pizza", "Salad"],
+const categories = document.querySelector('#categories');
+const items = categories.querySelectorAll('.item');
+console.log(`Number of categories: ${items.length}`);
 
-    // Change code below this line
-    getBalance() {
-        return this.balance;
-    },
-    getDiscount() {
-        return this.discount;
-    },
-    setDiscount(value) {
-        this.discount = value;
-    },
-    getOrders() {
-        return this.orders;
-    },
-    addOrder(cost, order) {
-        this.balance -= cost - cost * this.discount;
-        this.orders.push(order);
-    },
-    // Change code above this line
-};
+items.forEach(category => {
+    const titleElement = category.querySelector('h2');
+    const title = titleElement.textContent;
+    const count = category.querySelectorAll('li').length;
 
-customer.setDiscount(0.15);
-console.log(customer.getDiscount()); // 0.15
-customer.addOrder(5000, "Steak");
-console.log(customer.getBalance()); // 19750
-console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+    console.log(`Category: ${title}`);
+    console.log(`Number of categories: ${count}`);
+
+    category.style.display = 'flex';
+    category.style.padding = '16px';
+    category.style.flexDirection = 'column';
+    category.style.alignItems = 'flex-start';
+    category.style.gap = '16px';
+    category.style.borderRadius = '8px';
+    category.style.background = '#f6f6fe';
+    category.style.width = '100%';
+    category.style.color = '#2e2f42';
+    category.style.fontFamily = 'Montserrat';
+    category.style.fontSize = '16px';
+    category.style.fontStyle = 'normal';
+    category.style.fontWeight = '400';
+    category.style.lineHeight = '1.5';
+    category.style.letterSpacing = '0.04em';
+
+    titleElement.style.color = '#2e2f42';
+    titleElement.style.fontFamily = 'Montserrat';
+    titleElement.style.fontSize = '24px';
+    titleElement.style.fontStyle = 'normal';
+    titleElement.style.fontWeight = '600';
+    titleElement.style.lineHeight = '1.33';
+    titleElement.style.letterSpacing = '0.25em';
+    titleElement.style.margin = '0';
+
+    const listItems = category.querySelectorAll('li');
+    listItems.forEach(li => {
+        li.style.listStyle = 'none';
+        li.style.alignItems = 'start';
+        li.style.paddingLeft = '16px';
+        li.style.paddingTop = '8px';
+        li.style.marginBottom = '8px';
+        li.style.borderRadius = '4px';
+        li.style.border = '1px solid #808080';
+        li.style.width = '360px';
+        li.style.height = '40px';
+    });
+});
